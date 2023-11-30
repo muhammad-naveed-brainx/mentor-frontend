@@ -1,5 +1,5 @@
 //defining all the columns for MCQS table.
-export const baseURL = "http://13.232.222.199/api";
+export const baseURL = "http://3.109.175.28//api";
 export const classColumns = [
   {
     required: "required",

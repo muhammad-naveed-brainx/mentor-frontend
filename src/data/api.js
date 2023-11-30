@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://13.232.222.199/api";
+axios.defaults.baseURL = "http://3.109.175.28//api";
 
 const getClasses = async () => {
   const url = "/academic-classes";
