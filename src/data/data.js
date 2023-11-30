@@ -1,5 +1,5 @@
 //defining all the columns for MCQS table.
-export const baseURL = "http://3.109.175.28//api";
+export const baseURL = process.env.REACT_APP_BASE_URL;
 export const classColumns = [
   {
     required: "required",
@@ -133,90 +133,42 @@ export const menu = [
     listItems: [
       {
         id: 1,
-        title: "Homepage",
-        url: "/",
-        icon: "home.svg",
-      },
-      {
-        id: 2,
-        title: "Profile",
-        url: "/users/1",
-        icon: "user.svg",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "lists",
-    listItems: [
-      {
-        id: 1,
-        title: "Notes",
-        url: "/notes",
-        icon: "note.svg",
-      },
-      {
-        id: 2,
         title: "Questions",
-        url: "/questions",
+        url: "/",
         icon: "question.svg",
       },
-      {
-        id: 3,
-        title: "Tests",
-        url: "/tests",
-        icon: "order.svg",
-      },
-      {
-        id: 4,
-        title: "Result",
-        url: "/result",
-        icon: "post2.svg",
-      },
     ],
   },
-  {
-    id: 3,
-    title: "general",
-    listItems: [
-      {
-        id: 1,
-        title: "Notices",
-        url: "/",
-        icon: "notifications.svg",
-      },
-      {
-        id: 3,
-        title: "Forms",
-        url: "/",
-        icon: "form.svg",
-      },
-      {
-        id: 4,
-        title: "Calendar",
-        url: "/",
-        icon: "calendar.svg",
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "Maintenance",
-    listItems: [
-      {
-        id: 1,
-        title: "Settings",
-        url: "/",
-        icon: "setting.svg",
-      },
-      {
-        id: 2,
-        title: "Backups",
-        url: "/",
-        icon: "backup.svg",
-      },
-    ],
-  },
+  // {
+  //   id: 2,
+  //   title: "lists",
+  //   listItems: [
+  //     {
+  //       id: 1,
+  //       title: "Notes",
+  //       url: "/notes",
+  //       icon: "note.svg",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Questions",
+  //       url: "/questions",
+  //       icon: "question.svg",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Tests",
+  //       url: "/tests",
+  //       icon: "order.svg",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Result",
+  //       url: "/result",
+  //       icon: "post2.svg",
+  //     },
+  //   ],
+  // },
 ];
 
 export const topDealUsers = [

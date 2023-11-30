@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://3.109.175.28//api";
+axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 const getClasses = async () => {
   const url = "/academic-classes";
