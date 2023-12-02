@@ -1,3 +1,4 @@
+import "./login.css";
 const Login = () => {
   //Fetch data and send to Single Component
 
@@ -9,7 +10,7 @@ const Login = () => {
             <div class="forms-wrap">
               <form action="index.html" autocomplete="off" class="sign-in-form">
                 <div class="logo">
-                  <img src="./img/logo.png" alt="easyclass" />
+                  <img src="../logo.png" alt="easyclass" />
                   <h4>easyclass</h4>
                 </div>
 
@@ -113,9 +114,9 @@ const Login = () => {
 
             <div class="carousel">
               <div class="images-wrapper">
-                <img src="./img/image1.png" class="image img-1 show" alt="" />
-                <img src="./img/image2.png" class="image img-2" alt="" />
-                <img src="./img/image3.png" class="image img-3" alt="" />
+                <img src="../image1.png" class="image img-1 show" alt="" />
+                <img src="..image2.png" class="image img-2" alt="" />
+                <img src="../image3.png" class="image img-3" alt="" />
               </div>
 
               <div class="text-slider">
