@@ -6,12 +6,16 @@ const Login = () => {
     <>
       <main>
         <div className={styles.box}>
-          <div className={styles.inner-box}>
-            <div className={styles.forms-wrap}>
-              <form action="index.html" autocomplete="off" className={styles.sign-in-form}>
+          <div className={styles.innerBox}>
+            <div className={styles.formsWrap}>
+              <form
+                action="index.html"
+                autocomplete="off"
+                className={styles.signInForm}
+              >
                 <div className={styles.logo}>
                   <img src="../logo.png" alt="easyclass" />
-                  <h4>easyclass</h4>
+                  <h4>mentor</h4>
                 </div>
 
                 <div className={styles.heading}>
@@ -22,30 +26,34 @@ const Login = () => {
                   </a>
                 </div>
 
-                <div className={styles.actual-form}>
-                  <div className={styles.input-wrap}>
+                <div className={styles.actualForm}>
+                  <div className={styles.inputWrap}>
                     <input
                       type="text"
                       minlength="4"
-                      className={styles.input-field}
+                      className={styles.inputField}
                       autocomplete="off"
                       required
                     />
                     <label>Name</label>
                   </div>
 
-                  <div className={styles.input-wrap}>
+                  <div className={styles.inputWrap}>
                     <input
                       type="password"
                       minlength="4"
-                      className={styles.input-field}
+                      className={styles.inputField}
                       autocomplete="off"
                       required
                     />
                     <label>Password</label>
                   </div>
 
-                  <input type="submit" value="Sign In" className={styles.sign-btn} />
+                  <input
+                    type="submit"
+                    value="Sign In"
+                    className={styles.signBtn}
+                  />
 
                   <p className={styles.text}>
                     Forgotten your password or you login datails?
@@ -54,7 +62,11 @@ const Login = () => {
                 </div>
               </form>
 
-              <form action="index.html" autocomplete="off" className={styles.sign-up-form}>
+              <form
+                action="index.html"
+                autocomplete="off"
+                className={styles.signUpForm}
+              >
                 <div className={styles.logo}>
                   <img src="./img/logo.png" alt="easyclass" />
                   <h4>easyclass</h4>
@@ -68,40 +80,44 @@ const Login = () => {
                   </a>
                 </div>
 
-                <div className={styles.actual-form}>
-                  <div className={styles.input-wrap}>
+                <div className={styles.actualForm}>
+                  <div className={styles.inputWrap}>
                     <input
                       type="text"
                       minlength="4"
-                      className={styles.input-field}
+                      className={styles.inputField}
                       autocomplete="off"
                       required
                     />
                     <label>Name</label>
                   </div>
 
-                  <div className={styles.input-wrap}>
+                  <div className={styles.inputWrap}>
                     <input
                       type="email"
-                      className={styles.input-field}
+                      className={styles.inputField}
                       autocomplete="off"
                       required
                     />
                     <label>Email</label>
                   </div>
 
-                  <div className={styles.input-wrap}>
+                  <div className={styles.inputWrap}>
                     <input
                       type="password"
                       minlength="4"
-                      className={styles.input-field}
+                      className={styles.inputField}
                       autocomplete="off"
                       required
                     />
                     <label>Password</label>
                   </div>
 
-                  <input type="submit" value="Sign Up" className={styles.sign-btn} />
+                  <input
+                    type="submit"
+                    value="Sign Up"
+                    className={styles.signBtn}
+                  />
 
                   <p className={styles.text}>
                     By signing up, I agree to the
@@ -113,15 +129,29 @@ const Login = () => {
             </div>
 
             <div className={styles.carousel}>
-              <div className={styles.images-wrapper}>
-                <img src="../image1.png" className={styles.image img-1 show} alt="" />
-                <img src="..image2.png" className={styles.image img-2} alt="" />
-                <img src="../image3.png" className={styles.image img-3} alt="" />
+              <div className={styles.imagesWrapper}>
+                <img
+                  src="../image1.png"
+                  className={
+                    styles.image + " " + styles.img1 + " " + styles.show
+                  }
+                  alt=""
+                />
+                <img
+                  src="..image2.png"
+                  className={styles.image + " " + styles.img2}
+                  alt=""
+                />
+                <img
+                  src="../image3.png"
+                  className={styles.image + " " + styles.img3}
+                  alt=""
+                />
               </div>
 
-              <div className={styles.text-slider}>
-                <div className={styles.text-wrap}>
-                  <div className={styles.text-group}>
+              <div className={styles.textSlider}>
+                <div className={styles.textWrap}>
+                  <div className={styles.textGroup}>
                     <h2>Create your own courses</h2>
                     <h2>Customize as you like</h2>
                     <h2>Invite students to your class</h2>
