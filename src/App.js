@@ -1,7 +1,5 @@
-import Home from "./pages/home/Home";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import "./styles/global.scss";
-import Notes from "./pages/notes/Notes";
 import Questions from "./pages/questions/Questions";
 import Login from "./pages/login/Login";
 import Navbar from "./components/navbar/Navbar";
@@ -37,14 +35,6 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Questions />,
-        },
-        {
-          path: "/notes",
-          element: <Notes />,
-        },
-        {
-          path: "/questions",
           element: <Questions />,
         },
       ],
