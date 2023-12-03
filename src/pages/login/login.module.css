@@ -336,11 +336,11 @@ main.signUpMode .carousel {
     transform: translateX(100%);
   }
 
-  main.signUpMode form.sign-in-form {
+  main.signUpMode form.signInForm {
     transform: translateX(-100%);
   }
 
-  main.signUpMode form.sign-up-form {
+  main.signUpMode form.signUpForm {
     transform: translateX(0%);
   }
 
@@ -390,14 +390,4 @@ main.signUpMode .carousel {
   form {
     padding: 1rem 2rem 1.5rem;
   }
-}
-
-.bullet-3 {
-  
-}
-.bullet-1 {
-
-}
-.bullet-2 {
-
 }
