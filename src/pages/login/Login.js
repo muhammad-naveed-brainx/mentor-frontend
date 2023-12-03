@@ -3,9 +3,21 @@ import styles from "./login.module.css";
 const Login = () => {
   //Fetch data and send to Single Component
   const [isSignUpMode, setIsSignUpMode] = useState(false);
+  const [isInputActive, setIsInputActive] = useState(false);
+
+  // Event handler for input focus
+  const handleInputFocus = () => {
+    setIsInputActive(true);
+  };
+
+  // Event handler for input blur
+  const handleInputBlur = (e) => {
+    if (e.target.value !== "") return;
+    setIsInputActive(false);
+  };
 
   return (
-    <main>
+    <main className={isSignUpMode && styles.signUpMode}>
       <div className={styles.box}>
         <div className={styles.innerBox}>
           <div className={styles.formsWrap}>
@@ -22,7 +34,13 @@ const Login = () => {
               <div className={styles.heading}>
                 <h2>Welcome Back</h2>
                 <h6>Not registred yet?</h6>
-                <a href="#" className={styles.toggle}>
+                <a
+                  href="#"
+                  className={styles.toggle}
+                  onClick={() => {
+                    setIsSignUpMode(!isSignUpMode);
+                  }}
+                >
                   Sign up
                 </a>
               </div>
@@ -32,9 +50,15 @@ const Login = () => {
                   <input
                     type="text"
                     minlength="4"
-                    className={styles.inputField}
                     autocomplete="off"
                     required
+                    className={
+                      styles.inputField +
+                      " " +
+                      (isInputActive ? styles.active : "")
+                    }
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
                   />
                   <label>Name</label>
                 </div>
@@ -43,9 +67,15 @@ const Login = () => {
                   <input
                     type="password"
                     minlength="4"
-                    className={styles.inputField}
                     autocomplete="off"
                     required
+                    className={
+                      styles.inputField +
+                      " " +
+                      (isInputActive ? styles.active : "")
+                    }
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
                   />
                   <label>Password</label>
                 </div>
@@ -70,13 +100,19 @@ const Login = () => {
             >
               <div className={styles.logo}>
                 <img src="./img/logo.png" alt="easyclass" />
-                <h4>easyclass</h4>
+                <h4>mentor</h4>
               </div>
 
               <div className={styles.heading}>
                 <h2>Get Started</h2>
                 <h6>Already have an account?</h6>
-                <a href="#" className={styles.toggle}>
+                <a
+                  href="#"
+                  className={styles.toggle}
+                  onClick={() => {
+                    setIsSignUpMode(!isSignUpMode);
+                  }}
+                >
                   Sign in
                 </a>
               </div>
@@ -86,9 +122,15 @@ const Login = () => {
                   <input
                     type="text"
                     minlength="4"
-                    className={styles.inputField}
                     autocomplete="off"
                     required
+                    className={
+                      styles.inputField +
+                      " " +
+                      (isInputActive ? styles.active : "")
+                    }
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
                   />
                   <label>Name</label>
                 </div>
@@ -96,9 +138,15 @@ const Login = () => {
                 <div className={styles.inputWrap}>
                   <input
                     type="email"
-                    className={styles.inputField}
                     autocomplete="off"
                     required
+                    className={
+                      styles.inputField +
+                      " " +
+                      (isInputActive ? styles.active : "")
+                    }
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
                   />
                   <label>Email</label>
                 </div>
@@ -107,9 +155,15 @@ const Login = () => {
                   <input
                     type="password"
                     minlength="4"
-                    className={styles.inputField}
                     autocomplete="off"
                     required
+                    className={
+                      styles.inputField +
+                      " " +
+                      (isInputActive ? styles.active : "")
+                    }
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
                   />
                   <label>Password</label>
                 </div>
