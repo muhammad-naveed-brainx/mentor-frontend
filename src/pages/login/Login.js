@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styles from "./login.module.css";
 const Login = () => {
   //Fetch data and send to Single Component
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [isInputActive, setIsInputActive] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   // Event handler for input focus
   const handleInputFocus = () => {
@@ -15,6 +16,59 @@ const Login = () => {
     if (e.target.value !== "") return;
     setIsInputActive(false);
   };
+  const imageRefs = useRef([]);
+  const textSliderRef = useRef(null);
+  const bulletRefs = useRef([]);
+
+  const moveSlider = (index) => {
+    setActiveIndex(index);
+
+    // Handle images using React refs
+    imageRefs.current.forEach((imgRef, i) => {
+      if (imgRef) {
+        imgRef.classList.remove(styles.show);
+      }
+      if (i + 1 === index) {
+        imgRef.classList.add(styles.show);
+      }
+    });
+
+    // Handle text slider using React ref
+    const textSlider = textSliderRef.current;
+    if (textSlider) {
+      textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+    }
+
+    // Handle bullets using React refs
+    bulletRefs.current.forEach((bulletRef, i) => {
+      if (bulletRef) {
+        bulletRef.classList.remove(styles.active);
+      }
+      if (i + 1 === index) {
+        bulletRef.classList.add(styles.active);
+      }
+    });
+  };
+
+  // const moveSlider = (index) => {
+  //   setActiveIndex(index);
+
+  //   const images = document.querySelectorAll(`.${styles.image}`);
+  //   let currentImage = document.querySelector(`.${styles[`img${index}`]}`);
+  //   images.forEach((img) => img.classList.remove(styles.show));
+  //   currentImage.classList.add(styles.show);
+
+  //   const textSlider = document.querySelector(`.${styles.textGroup}`);
+  //   textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+
+  //   const bullets = document.querySelectorAll(`.${styles.bullet}`);
+  //   bullets.forEach((bull) => bull.classList.remove(styles.active));
+  //   const currentBullet = document.querySelector(
+  //     `.${styles[`bullet-${index}`]}`
+  //   );
+  //   currentBullet.classList.add(styles.active);
+  //   // this.classList.add("active");
+  // };
 
   return (
     <main className={isSignUpMode && styles.signUpMode}>
@@ -99,7 +153,7 @@ const Login = () => {
               className={styles.signUpForm}
             >
               <div className={styles.logo}>
-                <img src="./img/logo.png" alt="easyclass" />
+                <img src="../logo.png" alt="easyclass" />
                 <h4>mentor</h4>
               </div>
 
@@ -186,16 +240,13 @@ const Login = () => {
           <div className={styles.carousel}>
             <div className={styles.imagesWrapper}>
               <img
+                ref={(el) => (imageRefs.current[0] = el)}
                 src="../image1.png"
                 className={styles.image + " " + styles.img1 + " " + styles.show}
                 alt=""
               />
               <img
-                src="..image2.png"
-                className={styles.image + " " + styles.img2}
-                alt=""
-              />
-              <img
+                ref={(el) => (imageRefs.current[1] = el)}
                 src="../image3.png"
                 className={styles.image + " " + styles.img3}
                 alt=""
@@ -204,17 +255,22 @@ const Login = () => {
 
             <div className={styles.textSlider}>
               <div className={styles.textWrap}>
-                <div className={styles.textGroup}>
+                <div ref={textSliderRef} className={styles.textGroup}>
                   <h2>Create your own courses</h2>
-                  <h2>Customize as you like</h2>
                   <h2>Invite students to your class</h2>
                 </div>
               </div>
 
               <div className={styles.bullets}>
-                <span className={styles.active} data-value="1"></span>
-                <span data-value="2"></span>
-                <span data-value="3"></span>
+                <span
+                  ref={(el) => (bulletRefs.current[0] = el)}
+                  className={styles.active}
+                  onClick={() => moveSlider(1)}
+                ></span>
+                <span
+                  ref={(el) => (bulletRefs.current[1] = el)}
+                  onClick={() => moveSlider(2)}
+                ></span>
               </div>
             </div>
           </div>

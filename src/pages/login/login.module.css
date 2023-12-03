@@ -187,17 +187,17 @@ label {
   color: #8371fd;
 }
 
-main.signUpMode form.sign-in-form {
+main.signUpMode form.signInForm {
   opacity: 0;
   pointer-events: none;
 }
 
-main.signUpMode form.sign-up-form {
+main.signUpMode form.signUpForm {
   opacity: 1;
   pointer-events: all;
 }
 
-main.signUpMode .forms-wrap {
+main.signUpMode .formsWrap {
   left: 55%;
 }
 
@@ -390,4 +390,14 @@ main.signUpMode .carousel {
   form {
     padding: 1rem 2rem 1.5rem;
   }
+}
+
+.bullet-3 {
+  
+}
+.bullet-1 {
+
+}
+.bullet-2 {
+
 }
