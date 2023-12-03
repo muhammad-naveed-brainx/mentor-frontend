@@ -50,26 +50,6 @@ const Login = () => {
     });
   };
 
-  // const moveSlider = (index) => {
-  //   setActiveIndex(index);
-
-  //   const images = document.querySelectorAll(`.${styles.image}`);
-  //   let currentImage = document.querySelector(`.${styles[`img${index}`]}`);
-  //   images.forEach((img) => img.classList.remove(styles.show));
-  //   currentImage.classList.add(styles.show);
-
-  //   const textSlider = document.querySelector(`.${styles.textGroup}`);
-  //   textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
-
-  //   const bullets = document.querySelectorAll(`.${styles.bullet}`);
-  //   bullets.forEach((bull) => bull.classList.remove(styles.active));
-  //   const currentBullet = document.querySelector(
-  //     `.${styles[`bullet-${index}`]}`
-  //   );
-  //   currentBullet.classList.add(styles.active);
-  //   // this.classList.add("active");
-  // };
-
   return (
     <main className={isSignUpMode && styles.signUpMode}>
       <div className={styles.box}>
@@ -78,7 +58,7 @@ const Login = () => {
             <form
               action="index.html"
               autocomplete="off"
-              className={styles.signInForm}
+              className={styles.form + " " + styles.signInForm}
             >
               <div className={styles.logo}>
                 <img src="../logo.png" alt="easyclass" />
@@ -114,7 +94,7 @@ const Login = () => {
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                   />
-                  <label>Name</label>
+                  <label className={styles.label}>Name</label>
                 </div>
 
                 <div className={styles.inputWrap}>
@@ -131,7 +111,7 @@ const Login = () => {
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                   />
-                  <label>Password</label>
+                  <label className={styles.label}>Password</label>
                 </div>
 
                 <input
@@ -150,7 +130,7 @@ const Login = () => {
             <form
               action="index.html"
               autocomplete="off"
-              className={styles.signUpForm}
+              className={styles.form + " " + styles.signUpForm}
             >
               <div className={styles.logo}>
                 <img src="../logo.png" alt="easyclass" />
@@ -186,7 +166,7 @@ const Login = () => {
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                   />
-                  <label>Name</label>
+                  <label className={styles.label}>Name</label>
                 </div>
 
                 <div className={styles.inputWrap}>
@@ -202,7 +182,7 @@ const Login = () => {
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                   />
-                  <label>Email</label>
+                  <label className={styles.label}>Email</label>
                 </div>
 
                 <div className={styles.inputWrap}>
@@ -219,7 +199,7 @@ const Login = () => {
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                   />
-                  <label>Password</label>
+                  <label className={styles.label}>Password</label>
                 </div>
 
                 <input
