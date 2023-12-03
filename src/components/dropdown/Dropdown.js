@@ -1,10 +1,10 @@
-import "./dropdown.scss";
+import styles from "./dropdown.module.scss";
 
 const Dropdown = (props) => {
   const { label, options, value, onChange, onClick } = props;
   return (
-    <div className="drop-container">
-      <label> {label} </label>
+    <div className={styles.dropContainer}>
+      <h4 className={styles.label}> {label} </h4>
       <select value={value} onChange={onChange}>
         <option>--</option>
         {options?.map((option) => {

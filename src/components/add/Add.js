@@ -1,4 +1,4 @@
-import "./add.scss";
+import styles from "./add.module.scss";
 import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -61,10 +61,10 @@ const Add = (props) => {
     setOpen(false);
   };
   return (
-    <div className="add">
-      <div className="modal">
+    <div className={styles.add}>
+      <div className={styles.modal}>
         <span
-          className="close"
+          className={styles.close}
           onClick={() => {
             setOpen(false);
             typeof setAddType === "function" && setAddType("");
@@ -79,7 +79,7 @@ const Add = (props) => {
               (item) => !item.field.endsWith("id") && item.field !== "img"
             )
             .map((column) => (
-              <div className="item">
+              <div className={styles.item}>
                 <label>{column.headerName}</label>
                 <input
                   required={column.required}

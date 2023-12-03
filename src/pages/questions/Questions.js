@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Dropdown from "../../components/dropdown/Dropdown";
-import "./questions.scss";
+import styles from "./questions.module.scss";
 import { useEffect } from "react";
 import {
   getClasses,
@@ -149,7 +149,7 @@ const Questions = () => {
     <div>
       <h1>Questions</h1>
       <hr />
-      <div className="top-bar">
+      <div className={styles.topBar}>
         <Dropdown
           label="Classes"
           value={selectedClassId}
@@ -174,7 +174,7 @@ const Questions = () => {
       </div>
       {selectedChapterId ? (
         <>
-          <div className="info">
+          <div className={styles.info}>
             <h2>MCQS</h2>
             <button
               onClick={() => {
@@ -201,7 +201,7 @@ const Questions = () => {
           />
           <hr />
           {/* Here I'll show all the fill in the blank questions.  */}
-          <div className="info">
+          <div className={styles.info}>
             <h2>Fill In The Blanks</h2>
             <button
               onClick={() => {

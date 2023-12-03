@@ -1,28 +1,28 @@
-import "./navbar.scss";
+import styles from "./navbar.module.scss";
 
 const Navbar = () => {
   return (
-    <div className="navbar">
-      <div className="logo">
+    <div className={styles.navbar}>
+      <div className={styles.logo}>
         <img src="logo.svg" alt="" />
         <span>Mentor</span>
       </div>
-      <div className="icons">
-        {/* <img src="/search.svg" alt="" className="icon" />
-        <img src="/app.svg" alt="" className="icon" /> */}
-        {/* <img src="/expand.svg" alt="" className="icon" /> */}
-        <div className="notification">
+      <div className={styles.icons}>
+        {/* <img src="/search.svg" alt="" className={styles.icon} />
+        <img src="/app.svg" alt="" className={styles.icon} /> */}
+        {/* <img src="/expand.svg" alt="" className={styles.icon} /> */}
+        <div className={styles.notification}>
           <img src="/notifications.svg" alt="" />
           <span>1</span>
         </div>
-        <div className="user">
+        <div className={styles.user}>
           <img
             src="https://images.pexels.com/photos/11038549/pexels-photo-11038549.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
             alt=""
           />
           <span>Jane</span>
         </div>
-        <img src="/settings.svg" alt="" className="icon" />
+        <img src="/settings.svg" alt="" className={styles.icon} />
       </div>
     </div>
   );

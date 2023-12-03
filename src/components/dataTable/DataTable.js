@@ -1,5 +1,5 @@
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
-import "./dataTable.scss";
+import styles from "./dataTable.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ViewMcqs from "../questionDetails/mcqs/ViewMcqs";
@@ -71,14 +71,23 @@ const DataTable = (props) => {
     width: 200,
     renderCell: (params) => {
       return (
-        <div className="action">
-          <div className="delete" onClick={() => handleEdit(params.row.id)}>
+        <div className={styles.action}>
+          <div
+            className={styles.delete}
+            onClick={() => handleEdit(params.row.id)}
+          >
             <img src="/view.svg" alt="" />
           </div>
-          <div className="delete" onClick={() => handleView(params.row.id)}>
+          <div
+            className={styles.delete}
+            onClick={() => handleView(params.row.id)}
+          >
             <img src="/eye.svg" alt="" />
           </div>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
+          <div
+            className={styles.delete}
+            onClick={() => handleDelete(params.row.id)}
+          >
             <img src="/delete.svg" alt="" />
           </div>
         </div>
@@ -87,7 +96,7 @@ const DataTable = (props) => {
   };
 
   return (
-    <div className="dataTable">
+    <div className={styles.dataTable}>
       <DataGrid
         sx={{
           "& .MuiDataGrid-columnHeaderTitle": {
@@ -103,7 +112,7 @@ const DataTable = (props) => {
             maxHeight: "168px !important",
           },
         }}
-        className="dataGrid"
+        className={styles.dataGrid}
         rows={props.rows}
         columns={[...props.columns, actionColumn]}
         initialState={{

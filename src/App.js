@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import "./styles/global.scss";
+import styles from "./styles/global.module.scss";
 import Questions from "./pages/questions/Questions";
 import Login from "./pages/login/Login";
 import Navbar from "./components/navbar/Navbar";
@@ -11,13 +11,13 @@ const queryClient = new QueryClient();
 function App() {
   const Layout = () => {
     return (
-      <div className="main">
+      <div className={styles.main}>
         <Navbar />
-        <div className="container">
-          <div className="menuContainer">
+        <div className={styles.container}>
+          <div className={styles.menuContainer}>
             <Menu />
           </div>
-          <div className="contentContainer">
+          <div className={styles.contentContainer}>
             <QueryClientProvider client={queryClient}>
               <Outlet />
             </QueryClientProvider>

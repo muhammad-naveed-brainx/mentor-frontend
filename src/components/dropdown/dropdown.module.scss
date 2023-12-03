@@ -1,7 +1,11 @@
-.drop-container {
+.dropContainer {
     display: flex;
     flex-direction: column;
     width: 200px;
+}
+
+ .label {
+    margin-top: 10px;
 }
 
 select {

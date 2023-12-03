@@ -1,11 +1,11 @@
-import "./view-mcqs.scss";
+import styles from "./viewMcqs.module.scss";
 const ViewMcqs = (props) => {
   const { slug, setOpen, question } = props;
   return (
-    <div className="view-mcqs">
-      <div className="modal">
+    <div className={styles.viewMcqs}>
+      <div className={styles.modal}>
         <span
-          className="close"
+          className={styles.close}
           onClick={() => {
             setOpen(false);
           }}
@@ -18,10 +18,10 @@ const ViewMcqs = (props) => {
           <></>
         ) : (
           <>
-            <p className="options">A. {question.option_a} </p>
-            <p className="options">B. {question.option_b} </p>
-            <p className="options">C. {question.option_c} </p>
-            <p className="options">D. {question.option_d} </p>
+            <p className={styles.options}>A. {question.option_a} </p>
+            <p className={styles.options}>B. {question.option_b} </p>
+            <p className={styles.options}>C. {question.option_c} </p>
+            <p className={styles.options}>D. {question.option_d} </p>
           </>
         )}
 
