@@ -14,7 +14,7 @@ const ViewMcqs = (props) => {
         </span>
         <h1>Question detial</h1>
         <h4> Question: {question.stem} </h4>
-        {question.type === "blank" ? (
+        {question.type !== "multiple_choice" ? (
           <></>
         ) : (
           <>

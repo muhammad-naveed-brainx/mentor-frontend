@@ -309,6 +309,28 @@ const Questions = () => {
             data={addMcqsData}
           />
         )}
+        {addType === "long_question" && (
+          <Add
+            slug="long"
+            columns={longColumns}
+            setOpen={setOpen}
+            setAddType={setAddType}
+            setAddedItem={setAddedItem}
+            url={baseURL + "/questions"}
+            data={addMcqsData}
+          />
+        )}
+        {addType === "short_question" && (
+          <Add
+            slug="short"
+            columns={shortColumns}
+            setOpen={setOpen}
+            setAddType={setAddType}
+            setAddedItem={setAddedItem}
+            url={baseURL + "/questions"}
+            data={addMcqsData}
+          />
+        )}
         {addType === "blanks" && (
           <Add
             slug="blanks"
