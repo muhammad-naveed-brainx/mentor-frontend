@@ -125,6 +125,56 @@ export const blankColumns = [
     width: 500,
   },
 ];
+export const shortColumns = [
+  { field: "id", headerName: "ID", width: 50 },
+  {
+    required: "required",
+    field: "stem",
+    type: "string",
+    headerName: "Question Statement",
+    width: 400,
+  },
+  {
+    required: "required",
+    field: "correct_answer",
+    type: "string",
+    headerName: "Answer",
+    width: 400,
+  },
+  {
+    field: "explanation",
+    required: "",
+    type: "string",
+    headerName: "Explaination",
+    width: 400,
+  },
+];
+
+// defining all the long questions columns.
+export const longColumns = [
+  { field: "id", headerName: "ID", width: 50 },
+  {
+    required: "required",
+    field: "stem",
+    type: "string",
+    headerName: "Question Statement",
+    width: 400,
+  },
+  {
+    required: "required",
+    field: "correct_answer",
+    type: "string",
+    headerName: "Answer",
+    width: 400,
+  },
+  {
+    field: "explanation",
+    required: "",
+    type: "string",
+    headerName: "Explaination",
+    width: 400,
+  },
+];
 
 export const menu = [
   {

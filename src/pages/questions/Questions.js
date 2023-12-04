@@ -16,6 +16,8 @@ import {
   subjectColumns,
   storeChapterCol,
   blankColumns,
+  shortColumns,
+  longColumns,
 } from "../../data/data";
 import Add from "../../components/add/Add";
 import { useQuery } from "@tanstack/react-query";
@@ -42,6 +44,8 @@ const Questions = () => {
   const [chapterQuestions, setChapterQuestions] = useState({});
   const [mcqsQuestions, setMcqsQuestions] = useState({});
   const [blankQuestions, setBlankQuestion] = useState({});
+  const [longQuestions, setLongQuestions] = useState({});
+  const [shortQuestions, setShortQuestions] = useState({});
 
   const [addMcqsData, setAddMcqsData] = useState({});
 
@@ -105,6 +109,12 @@ const Questions = () => {
       );
       setBlankQuestion(
         chapterQuestions.filter((question) => question.type == "blank")
+      );
+      setShortQuestions(
+        chapterQuestions.filter((question) => question.type == "short_question")
+      );
+      setLongQuestions(
+        chapterQuestions.filter((question) => question.type == "long_question")
       );
     }
   }, [questions, chapterQuestions, selectedChapterId]);
@@ -224,6 +234,60 @@ const Questions = () => {
             slug="questions"
             columns={blankColumns}
             rows={blankQuestions}
+            setAddedItem={setAddedItem}
+          />
+          <hr />
+          {/* Here I'll show all the fill in the Short questions.  */}
+          <div className={styles.info}>
+            <h2>Short Questions</h2>
+            <button
+              onClick={() => {
+                if (selectedChapterId && setSelectedChapterId !== 0) {
+                  {
+                    setAddMcqsData({
+                      chapter_id: selectedChapterId,
+                      type: "short_question",
+                    });
+                    setAddType("short_question");
+                    setOpen(true);
+                  }
+                } else alert("Please choose a chapter first...");
+              }}
+            >
+              Add New
+            </button>
+          </div>
+          <DataTable
+            slug="questions"
+            columns={longColumns}
+            rows={shortQuestions}
+            setAddedItem={setAddedItem}
+          />
+          <hr />
+          {/* Here I'll show all the fill in the Long questions.  */}
+          <div className={styles.info}>
+            <h2>Long Questions</h2>
+            <button
+              onClick={() => {
+                if (selectedChapterId && setSelectedChapterId !== 0) {
+                  {
+                    setAddMcqsData({
+                      chapter_id: selectedChapterId,
+                      type: "long_question",
+                    });
+                    setAddType("long_question");
+                    setOpen(true);
+                  }
+                } else alert("Please choose a chapter first...");
+              }}
+            >
+              Add New
+            </button>
+          </div>
+          <DataTable
+            slug="questions"
+            columns={longColumns}
+            rows={longQuestions}
             setAddedItem={setAddedItem}
           />
         </>
