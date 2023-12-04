@@ -66,6 +66,7 @@ const Add = (props) => {
         <span
           className={styles.close}
           onClick={() => {
+            document.body.style.overflow = "auto";
             setOpen(false);
             typeof setAddType === "function" && setAddType("");
           }}
@@ -81,16 +82,34 @@ const Add = (props) => {
             .map((column) => (
               <div className={styles.item}>
                 <label>{column.headerName}</label>
-                <input
-                  required={column.required}
-                  type={column.type}
-                  placeholder={column.field}
-                  value={formData[column.field] || ""}
-                  onChange={(event) => handleInputChange(event, column.field)}
-                />
+                {column.isTextArea ? (
+                  <textarea
+                    required={column.required}
+                    type={column.type}
+                    placeholder={column.headerName}
+                    value={formData[column.field] || ""}
+                    onChange={(event) => handleInputChange(event, column.field)}
+                    rows={4}
+                    cols={50}
+                  />
+                ) : (
+                  <input
+                    required={column.required}
+                    type={column.type}
+                    placeholder={column.headerName}
+                    value={formData[column.field] || ""}
+                    onChange={(event) => handleInputChange(event, column.field)}
+                  />
+                )}
               </div>
             ))}
-          <button> {btnLabel || "Add"} </button>
+          <button
+            onClick={() => {
+              document.body.style.overflow = "auto";
+            }}
+          >
+            {btnLabel || "Add"}
+          </button>
         </form>
       </div>
     </div>

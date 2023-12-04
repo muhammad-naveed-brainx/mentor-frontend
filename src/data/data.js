@@ -99,6 +99,7 @@ export const mcqsColumns = [
     type: "string",
     headerName: "Explaination",
     width: 250,
+    isTextArea: true,
   },
 ];
 export const blankColumns = [
@@ -123,6 +124,7 @@ export const blankColumns = [
     type: "string",
     headerName: "Explaination",
     width: 500,
+    isTextArea: true,
   },
 ];
 export const shortColumns = [
@@ -140,6 +142,7 @@ export const shortColumns = [
     type: "string",
     headerName: "Answer",
     width: 400,
+    isTextArea: true,
   },
   {
     field: "explanation",
@@ -147,6 +150,7 @@ export const shortColumns = [
     type: "string",
     headerName: "Explaination",
     width: 400,
+    isTextArea: true,
   },
 ];
 
@@ -166,6 +170,7 @@ export const longColumns = [
     type: "string",
     headerName: "Answer",
     width: 400,
+    isTextArea: true,
   },
   {
     field: "explanation",
@@ -173,6 +178,7 @@ export const longColumns = [
     type: "string",
     headerName: "Explaination",
     width: 400,
+    isTextArea: true,
   },
 ];
 

@@ -10,27 +10,11 @@ import { deleteQuestion } from "../../data/api";
 // import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const DataTable = (props) => {
-  // TEST THE API
-
-  // const queryClient = useQueryClient();
-  // // const mutation = useMutation({
-  // //   mutationFn: (id: number) => {
-  // //     return fetch(`http://localhost:8800/api/${props.slug}/${id}`, {
-  // //       method: "delete",
-  // //     });
-  // //   },
-  // //   onSuccess: ()=>{
-  // //     queryClient.invalidateQueries([`all${props.slug}`]);
-  // //   }
-  // // });
-
   const [open, setOpen] = useState(false);
   const [updateOpen, setUpdateOpen] = useState(false);
   const [requestedQuestion, setREquestedQuestion] = useState({});
 
   const handleDelete = (number) => {
-    //delete the item
-    // mutation.mutate(id)
     console.log(number);
     Swal.fire({
       title: "Are you sure?",
@@ -58,11 +42,13 @@ const DataTable = (props) => {
   const handleView = (number) => {
     setREquestedQuestion(props.rows.find((obj) => obj.id == number));
     setOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const handleEdit = (number) => {
     setREquestedQuestion(props.rows.find((obj) => obj.id == number));
     setUpdateOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const actionColumn = {

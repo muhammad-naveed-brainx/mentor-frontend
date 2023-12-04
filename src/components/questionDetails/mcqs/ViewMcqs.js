@@ -7,6 +7,7 @@ const ViewMcqs = (props) => {
         <span
           className={styles.close}
           onClick={() => {
+            document.body.style.overflow = "auto";
             setOpen(false);
           }}
         >

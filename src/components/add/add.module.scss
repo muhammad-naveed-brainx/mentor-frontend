@@ -1,9 +1,10 @@
 @import "../../styles/variables.scss";
 
 .add {
+  z-index: 99;
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.724);
@@ -39,10 +40,9 @@
       justify-content: space-between;
 
       .item {
-        width: 49%;
+        width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 10px;
         margin-bottom: 20px;
 
         label {
@@ -50,6 +50,14 @@
         }
 
         input {
+          padding: 10px;
+          background-color: transparent;
+          color: white;
+          outline: none;
+          border: 1px solid #938d8d;
+          border-radius: 3px;
+        }
+        textarea {
           padding: 10px;
           background-color: transparent;
           color: white;
