@@ -46,7 +46,7 @@ const Add = (props) => {
     },
     onSuccess: () => {
       setAddedItem(`${slug} added`);
-      queryClient.invalidateQueries([`all${slug}s`]);
+      queryClient.invalidateQueries([`all${slug}`]);
     },
   });
 

@@ -21,7 +21,7 @@ import {
 } from "../../data/data";
 import Add from "../../components/add/Add";
 import { useQuery } from "@tanstack/react-query";
-import { stepClasses } from "@mui/material";
+import useClasses from "../../hooks/UseClasses";
 
 const Questions = () => {
   //Fetch data and send to Single Component
@@ -29,7 +29,7 @@ const Questions = () => {
   const [addType, setAddType] = useState("");
   const [addedItem, setAddedItem] = useState("");
 
-  const [classes, setClasses] = useState();
+  // const [classes, setClasses] = useState();
   const [selectedClassId, setSelectedClassId] = useState();
 
   const [subjects, setSubjects] = useState();
@@ -49,13 +49,18 @@ const Questions = () => {
 
   const [addMcqsData, setAddMcqsData] = useState({});
 
+  const { isLoading, data: classes } = useClasses();
+  // isLoading
+  //   ? console.log("Loading...")
+  //   : console.log("UseClasses data: ", classses);
+
   // Get all the classes
-  useEffect(() => {
-    setAddedItem("");
-    getClasses().then((result) => {
-      setClasses(result.data.data);
-    });
-  }, [addedItem]);
+  // useEffect(() => {
+  //   setAddedItem("");
+  //   getClasses().then((result) => {
+  //     setClasses(result.data.data);
+  //   });
+  // }, [addedItem]);
 
   // Get all the subjects
   useEffect(() => {
