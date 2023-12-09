@@ -21,7 +21,8 @@ import {
 } from "../../data/data";
 import Add from "../../components/add/Add";
 import { useQuery } from "@tanstack/react-query";
-import useClasses from "../../hooks/UseClasses";
+import useClasses from "../../hooks/useClasses";
+import useSubjects from "../../hooks/useSubjects";
 
 const Questions = () => {
   //Fetch data and send to Single Component
@@ -32,7 +33,7 @@ const Questions = () => {
   // const [classes, setClasses] = useState();
   const [selectedClassId, setSelectedClassId] = useState();
 
-  const [subjects, setSubjects] = useState();
+  // const [subjects, setSubjects] = useState();
   const [selectedSubjId, setSelectedSubjId] = useState();
   const [addSubjData, setAddSubjData] = useState({});
 
@@ -49,7 +50,9 @@ const Questions = () => {
 
   const [addMcqsData, setAddMcqsData] = useState({});
 
-  const { isLoading, data: classes } = useClasses();
+  const { data: classes } = useClasses();
+  const { data: subjects } = useSubjects(selectedClassId);
+  console.log("Subjects: ", subjects);
   // isLoading
   //   ? console.log("Loading...")
   //   : console.log("UseClasses data: ", classses);
@@ -63,18 +66,18 @@ const Questions = () => {
   // }, [addedItem]);
 
   // Get all the subjects
-  useEffect(() => {
-    setChapterQuestions([]);
-    setChapters([]);
-    setSubjects([]);
-    setAddedItem("");
+  // useEffect(() => {
+  //   setChapterQuestions([]);
+  //   setChapters([]);
+  //   setSubjects([]);
+  //   setAddedItem("");
 
-    if (selectedClassId != "Classes" && selectedClassId) {
-      getSubjects(selectedClassId).then((result) => {
-        setSubjects(result.data.data);
-      });
-    }
-  }, [selectedClassId, addedItem]);
+  //   if (selectedClassId != "" && selectedClassId) {
+  //     getSubjects(selectedClassId).then((result) => {
+  //       setSubjects(result.data.data);
+  //     });
+  //   }
+  // }, [selectedClassId, addedItem]);
 
   // Get all the chapters
   useEffect(() => {
