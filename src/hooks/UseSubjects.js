@@ -7,7 +7,7 @@ const useSubjects = (classId) => {
   const fetchSubjects = () => axios.get(url).then((res) => res.data.data);
 
   return useQuery({
-    queryKey: ["allSubject", classId],
+    queryKey: ["class", classId, "subjects"],
     queryFn: fetchSubjects,
   });
 };
