@@ -9,6 +9,7 @@ const useSubjects = (classId) => {
   return useQuery({
     queryKey: ["class", classId, "subjects"],
     queryFn: fetchSubjects,
+    staleTime: 2 * 60 * 1000,
   });
 };
 

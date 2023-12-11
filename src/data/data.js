@@ -137,7 +137,7 @@ export const shortColumns = [
     width: 400,
   },
   {
-    required: "required",
+    required: "",
     field: "correct_answer",
     type: "string",
     headerName: "Answer",
@@ -165,7 +165,7 @@ export const longColumns = [
     width: 400,
   },
   {
-    required: "required",
+    required: "",
     field: "correct_answer",
     type: "string",
     headerName: "Answer",

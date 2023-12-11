@@ -13,8 +13,20 @@ const Add = (props) => {
     setAddedItem,
     data,
     btnLabel,
+    addType,
+    subjId,
   } = props;
+  console.log(subjId);
 
+  let queryKey;
+  if (subjId) queryKey = ["subject", subjId, "questions"];
+  if (addType === "subject")
+    queryKey = ["class", data.academic_class_id, "subjects"];
+  else if (addType === "chapter")
+    queryKey = ["subject", data.academic_subject_id, "chapters"];
+  else if (addType === "class") queryKey = ["allClass"];
+
+  console.log("QueryKey", queryKey);
   useEffect(() => {
     // Merge incomingData with the current state using spread operator
     setFormData((prevData) => ({
@@ -46,7 +58,7 @@ const Add = (props) => {
     },
     onSuccess: () => {
       setAddedItem(`${slug} added`);
-      queryClient.invalidateQueries([`all${slug}`]);
+      queryClient.invalidateQueries(queryKey);
     },
   });
 

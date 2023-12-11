@@ -9,6 +9,7 @@ const useClasses = () => {
   return useQuery({
     queryKey: ["allClass"],
     queryFn: fetchClasses,
+    staleTime: 2 * 60 * 1000,
   });
 };
 

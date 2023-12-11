@@ -24,6 +24,7 @@ import { useQuery } from "@tanstack/react-query";
 import useClasses from "../../hooks/useClasses";
 import useSubjects from "../../hooks/useSubjects";
 import useChapters from "../../hooks/useChapters";
+import useQuestions from "../../hooks/useQuestions";
 
 const Questions = () => {
   //Fetch data and send to Single Component
@@ -31,103 +32,39 @@ const Questions = () => {
   const [addType, setAddType] = useState("");
   const [addedItem, setAddedItem] = useState("");
 
-  // const [classes, setClasses] = useState();
   const [selectedClassId, setSelectedClassId] = useState();
 
-  // const [subjects, setSubjects] = useState();
   const [selectedSubjId, setSelectedSubjId] = useState();
   const [addSubjData, setAddSubjData] = useState({});
 
-  // const [chapters, setChapters] = useState();
   const [selectedChapterId, setSelectedChapterId] = useState();
   const [addChapterData, setAddChapterData] = useState();
-
-  const [questions, setQuestions] = useState([]);
-  const [chapterQuestions, setChapterQuestions] = useState({});
-  const [mcqsQuestions, setMcqsQuestions] = useState({});
-  const [blankQuestions, setBlankQuestion] = useState({});
-  const [longQuestions, setLongQuestions] = useState({});
-  const [shortQuestions, setShortQuestions] = useState({});
 
   const [addMcqsData, setAddMcqsData] = useState({});
 
   const { data: classes } = useClasses();
   const { data: subjects } = useSubjects(selectedClassId);
   const { data: chapters } = useChapters(selectedSubjId);
-  // console.log("Subjects: ", subjects);
-  // isLoading
-  //   ? console.log("Loading...")
-  //   : console.log("UseClasses data: ", classses);
+  const { data: questions } = useQuestions(selectedSubjId);
+  const chapterQuestions = questions?.filter(
+    (question) => question.chapter_id == selectedChapterId
+  );
 
-  // Get all the classes
-  // useEffect(() => {
-  //   setAddedItem("");
-  //   getClasses().then((result) => {
-  //     setClasses(result.data.data);
-  //   });
-  // }, [addedItem]);
+  const mcqsQuestions = chapterQuestions?.filter(
+    (question) => question.type == "multiple_choice"
+  );
 
-  // Get all the subjects
-  // useEffect(() => {
-  //   setChapterQuestions([]);
-  //   setChapters([]);
-  //   setSubjects([]);
-  //   setAddedItem("");
+  const blankQuestions = chapterQuestions?.filter(
+    (question) => question.type == "blank"
+  );
 
-  //   if (selectedClassId != "" && selectedClassId) {
-  //     getSubjects(selectedClassId).then((result) => {
-  //       setSubjects(result.data.data);
-  //     });
-  //   }
-  // }, [selectedClassId, addedItem]);
+  const shortQuestions = chapterQuestions?.filter(
+    (question) => question.type == "short_question"
+  );
 
-  // Get all the chapters
-  // useEffect(() => {
-  //   setChapterQuestions([]);
-  //   setAddedItem("");
-  //   setQuestions([]);
-  //   setChapters([]);
-  //   if (selectedSubjId !== "Subjects" && selectedSubjId) {
-  //     getChapters(selectedSubjId).then((result) => {
-  //       setChapters(result.data.data);
-  //     });
-  //   }
-  // }, [selectedSubjId, addedItem]);
-
-  // Get all the Questions
-  useEffect(() => {
-    setAddedItem("");
-    if (selectedSubjId !== "Subjects" && selectedSubjId) {
-      getQuestions(selectedSubjId).then((result) => {
-        setQuestions(result.data.data);
-      });
-    }
-  }, [selectedSubjId, addedItem]);
-
-  /**
-   * when question update it will re filter them.
-   */
-  useEffect(() => {
-    if (selectedChapterId) {
-      setChapterQuestions(
-        questions.filter((question) => question.chapter_id == selectedChapterId)
-      );
-      setMcqsQuestions(
-        chapterQuestions.filter(
-          (question) => question.type == "multiple_choice"
-        )
-      );
-      setBlankQuestion(
-        chapterQuestions.filter((question) => question.type == "blank")
-      );
-      setShortQuestions(
-        chapterQuestions.filter((question) => question.type == "short_question")
-      );
-      setLongQuestions(
-        chapterQuestions.filter((question) => question.type == "long_question")
-      );
-    }
-  }, [questions, chapterQuestions, selectedChapterId]);
+  const longQuestions = chapterQuestions?.filter(
+    (question) => question.type == "long_question"
+  );
 
   const handleClassChange = (e) => {
     let id = e.currentTarget.value;
@@ -135,8 +72,8 @@ const Questions = () => {
       setAddType("class");
     } else {
       setSelectedClassId(id);
-      setSelectedChapterId(null);
-      setSelectedSubjId(null);
+      if (selectedChapterId !== undefined) setSelectedChapterId(undefined);
+      if (selectedSubjId !== undefined) setSelectedSubjId(undefined);
     }
   };
 
@@ -198,14 +135,13 @@ const Questions = () => {
             <h2>MCQS</h2>
             <button
               onClick={() => {
-                if (selectedChapterId && setSelectedChapterId !== 0) {
+                if (selectedChapterId && selectedChapterId !== 0) {
                   {
                     setAddMcqsData({
                       chapter_id: selectedChapterId,
                       type: "multiple_choice",
                     });
                     setAddType("mcqs");
-                    setOpen(true);
                   }
                 } else alert("Please choose a chapter first...");
               }}
@@ -310,6 +246,8 @@ const Questions = () => {
       <>
         {addType === "mcqs" && (
           <Add
+            subjId={selectedSubjId}
+            addType={addType}
             slug="mcqs"
             columns={mcqsColumns}
             setOpen={setOpen}
@@ -321,6 +259,8 @@ const Questions = () => {
         )}
         {addType === "long_question" && (
           <Add
+            subjId={selectedSubjId}
+            addType={addType}
             slug="long"
             columns={longColumns}
             setOpen={setOpen}
@@ -332,6 +272,8 @@ const Questions = () => {
         )}
         {addType === "short_question" && (
           <Add
+            subjId={selectedSubjId}
+            addType={addType}
             slug="short"
             columns={shortColumns}
             setOpen={setOpen}
@@ -343,6 +285,8 @@ const Questions = () => {
         )}
         {addType === "blanks" && (
           <Add
+            subjId={selectedSubjId}
+            addType={addType}
             slug="blanks"
             columns={blankColumns}
             setOpen={setOpen}
@@ -354,6 +298,7 @@ const Questions = () => {
         )}
         {addType === "class" && (
           <Add
+            addType={addType}
             slug="Class"
             columns={classColumns}
             setOpen={setOpen}
@@ -366,6 +311,7 @@ const Questions = () => {
 
         {addType === "subject" && (
           <Add
+            addType={addType}
             slug="Subject"
             columns={subjectColumns}
             setOpen={setOpen}
@@ -377,6 +323,7 @@ const Questions = () => {
         )}
         {addType === "chapter" && (
           <Add
+            addType={addType}
             slug="Chapter"
             columns={storeChapterCol}
             setOpen={setOpen}
