@@ -1,0 +1,64 @@
+@import './base.css';
+
+#app {
+  min-height: 100vh;
+  background: #FAFAFA !important;
+  /*padding: 2.5rem 4rem;*/
+  /*font-weight: normal;*/
+}
+
+.el-select-dropdown .el-scrollbar .selected{
+  color: #C4A662;
+}
+
+.dropdown-item.active, .dropdown-item:active, .dropdown-item:hover{
+  background-color: #C4A662 !important;
+  color: white !important;
+}
+
+.el-tabs__item:hover{
+  color: #C4A662 !important;
+}
+
+.mapping-cred-zero-edge-warn .el-button--primary{
+  background-color: #C4A662 !important;
+  border-color: #C4A662 !important;
+}
+
+.el-input.is-disabled .el-input__wrapper, .el-input.el-input--large.is-disabled.el-input--suffix, .el-input.is-disabled .el-input__inner{
+  color: #F9F6EF !important;
+  background-color: #F9F6EF !important;
+  /*color: #F9F6EF !important;*/
+}
+.el-input.is-disabled .el-input__wrapper .el-input__suffix{
+  display: none;
+}
+
+.ql-container{
+  height: 150px !important;
+}
+
+/*a,*/
+/*.green {*/
+/*  text-decoration: none;*/
+/*  color: hsla(160, 100%, 37%, 1);*/
+/*  transition: 0.4s;*/
+/*}*/
+
+/*@media (hover: hover) {*/
+/*  a:hover {*/
+/*    background-color: hsla(160, 100%, 37%, 0.2);*/
+/*  }*/
+/*}*/
+
+/*@media (min-width: 1024px) {*/
+/*  body {*/
+/*    display: flex;*/
+/*    !*place-items: center;*!*/
+/*  }*/
+
+/*  #app {*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr 1fr;*/
+/*  }*/
+/*}*/
