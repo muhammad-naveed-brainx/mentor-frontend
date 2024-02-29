@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <div class="row" style="margin-bottom: 40px">
-      <div class="user-heading">Update your password</div>
+  <div class="custom-padding text-center">
+    <div class="my-4">
+      <div class="sign-in ">Update your password</div>
     </div>
-    <div class="main-container" style="width: 750px">
-      <el-form hide-required-asterisk label-position="top" size="large" ref="formRef" style="max-width: 440px"
-               :model="requestData" :rules="rules">
+    <div>
+      <el-form hide-required-asterisk label-position="top" size="large" ref="formRef" :model="requestData" :rules="rules">
         <el-form-item label="Current Password" required size="large" prop="current_password">
           <el-input required placeholder="Enter current password" size="large" v-model="requestData.current_password" type="password"></el-input>
         </el-form-item>
@@ -15,13 +14,10 @@
         <el-form-item label="Confirm New Password" required size="large" prop="confirm_new_password">
           <el-input placeholder="Enter new password again" size="large" v-model="requestData.confirm_new_password" type="password"></el-input>
         </el-form-item>
+        <el-form-item>
+          <el-button @click="updatePassword" color="#C4A662" class="text-white w-100 btn-caption">Update Password</el-button>
+        </el-form-item>
       </el-form>
-    </div>
-    <div class="d-flex justify-content-start">
-      <el-button @click="updatePassword" color="#C4A662" class="add-btn-colored text-white"
-                 style="font: normal normal 600 16px/24px Raleway;">
-        Update Password
-      </el-button>
     </div>
   </div>
 </template>
@@ -99,12 +95,19 @@ const updatePassword = () => {
 </script>
 
 <style scoped>
-.main-container {
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 1px solid #DCDCDC;
-  border-radius: 10px;
-  opacity: 1;
-  padding: 36px 21px;
-  margin-bottom: 24px;
+.btn-caption {
+  font: normal normal 600 16px/24px Raleway;
+}
+.sign-in {
+  font: normal normal 600 30px/48px Poppins;
+  color: #141416;
+}
+.custom-padding {
+  padding: 90px;
+}
+@media screen and (max-width: 768px) {
+  .custom-padding {
+    padding: 0;
+  }
 }
 </style>

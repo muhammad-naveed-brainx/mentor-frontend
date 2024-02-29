@@ -1,50 +1,76 @@
 import {createRouter, createWebHistory} from 'vue-router'
 //Auth views
-import Login from '@/views/auth/Login.vue'
-import ResetPassword from '@/views/auth/ResetPassword.vue'
-import ResetSuccess from '@/views/auth/ResetSuccess.vue'
-import UpdatePassword from '@/views/auth/UpdatePassword.vue'
-import ChangePassword from '@/views/auth/ChangePassword.vue'
+import AuthIndex from '@/views/auth/AuthIndex.vue'
+import Login from '@/views/auth/components/Login.vue'
+import SignUp from '@/views/auth/components/SignUp.vue'
+import SignUpSuccess from '@/views/auth/components/SignUpSuccess.vue'
+import ResetPassword from '@/views/auth/components/ResetPassword.vue'
+import ResetSuccess from '@/views/auth/components/ResetSuccess.vue'
+import UpdatePassword from '@/views/auth/components/UpdatePassword.vue'
+import ChangePassword from '@/views/auth/components/ChangePassword.vue'
 //Dashboard views
 import DashboardIndex from '@/views/dashboard/DashboardIndex.vue'
 import Dashboard from '@/views/dashboard/components/Dashboard.vue'
 
+
 const authPages = [
     {
-        path: '/login',
-        name: 'login',
-        component: Login,
-        beforeEnter: (to, from, next) => {
-            if (window.localStorage.getItem("api_token")) {
-                next({
-                    name: "dashboard"
-                })
-            } else next()
-        }
-    },
-    {
-        path: '/reset-password',
-        name: 'reset',
-        component: ResetPassword
-    },
-    {
-        path: '/sent-password',
-        name: 'sent',
-        component: ResetSuccess
-    },
-    {
-        path: '/password',
-        name: 'update',
-        component: UpdatePassword
+        path: '/',
+        component: AuthIndex,
+        children: [
+            {
+                path: '/login',
+                name: 'login',
+                component: Login,
+                beforeEnter: (to, from, next) => {
+                    if (window.localStorage.getItem("api_token")) {
+                        next({
+                            name: "dashboard"
+                        })
+                    } else next()
+                }
+            },
+            {
+                path: '/register',
+                name: 'signup',
+                component: SignUp
+            },
+            {
+                path: '/register-success',
+                name: 'signup-success',
+                component: SignUpSuccess
+            },
+            {
+                path: '/reset-password',
+                name: 'reset',
+                component: ResetPassword
+            },
+            {
+                path: '/reset-success',
+                name: 'sent',
+                component: ResetSuccess
+            },
+            {
+                path: '/update-password',
+                name: 'update',
+                component: UpdatePassword
+            },
+            {
+                path: '/change-password',
+                name: 'change',
+                component: ChangePassword
+            }
+        ]
     }
 ]
+
 const dashboardPages = {
     path: '/',
     component: DashboardIndex,
     meta: { requiresAuth: true },
     children: [
         {
-            path: '',
+            path: 'dashboard',
             name: 'dashboard',
             component: Dashboard,
         },
@@ -59,6 +85,7 @@ const dashboardPages = {
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
+        { path: '/', redirect: { name: 'login' }},
         ...authPages,
         dashboardPages,
     ],

@@ -1,9 +1,7 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center height-100-vh">
-  <div class="login-container text-center" v-loading="loading">
-    <div><img width="157" src="@/assets/images/org_logo.png"></div>
+  <div class="custom-padding text-center" v-loading="loading">
     <div><label class="sign-in my-5">{{title}}</label></div>
-    <div class="width-383 mx-auto">
+    <div>
       <el-form hide-required-asterisk label-position="top" size="large" ref="formRef" :model="form" :rules="rules">
         <el-form-item required size="large" prop="password">
           <el-input type="password" placeholder="New Password" size="large" v-model="form.password"></el-input>
@@ -19,7 +17,6 @@
       </el-form>
     </div>
   </div>
-  </div>
 </template>
 <script setup>
 import {computed, onMounted, reactive, ref} from "vue";
@@ -27,7 +24,6 @@ import router from "@/router";
 import {useRoute} from "vue-router";
 import {ElNotification} from "element-plus";
 
-const userStore = useUserStore()
 const route = useRoute();
 const formRef = ref(null);
 const loading = ref(false)
@@ -90,28 +86,18 @@ onMounted(()=>{
   typeQuery.value = route.query.type;
 })
 </script>
-<style>
-.login-container {
-  max-width: 760px;
-  max-height: 572px;
-  border: 1px solid #DCDCDC;
-  border-radius: 10px;
-  background-color: #FFFFFF;
-  padding: 50px 186px;
-}
+<style scoped>
 .sign-in {
   font: normal normal 600 30px/48px Poppins;
   color: #141416;
 }
-.width-383 {
-  width: 383px;
+.custom-padding {
+  padding: 90px;
 }
-.forgot-password {
-  font: normal normal medium 14px/16px Poppins;
-  letter-spacing: -0.14px;
-  color: #182B4E;
-}
-.height-100-vh {
-  height: 91vh;
+
+@media screen and (max-width: 768px) {
+  .custom-padding {
+    padding: 0;
+  }
 }
 </style>

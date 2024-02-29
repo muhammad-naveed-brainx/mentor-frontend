@@ -1,12 +1,10 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center height-100-vh">
-  <div class="login-container text-center">
-    <div><img width="157" src="@/assets/images/org_logo.png"></div>
-    <div class="my-5">
+  <div class="custom-padding text-center">
+    <div class="my-4">
       <label class="sign-in ">Reset your password</label>
       <label>Your password reset link will be sent to the registered email address.</label>
     </div>
-    <div class="width-383 mx-auto">
+    <div>
       <el-form hide-required-asterisk label-position="top" size="large" ref="formRef" :model="form" :rules="rules">
         <el-form-item required size="large" prop="email">
           <el-input type="email" placeholder="Email" size="large" v-model="form.email"></el-input>
@@ -19,11 +17,10 @@
       <label @click="backToLogin" class="cursor-pointer forgot-password">Back to login</label>
     </div>
   </div>
-  </div>
 </template>
 <script setup>
 import {reactive, ref} from "vue";
-import router from "../../router";
+import router from "../../../router";
 import {ElNotification} from "element-plus";
 
 const formRef = ref(null);
@@ -53,5 +50,22 @@ const backToLogin = () => {
   router.push({name: 'login'})
 }
 </script>
-<style>
+<style scoped>
+.sign-in {
+  font: normal normal 600 30px/48px Poppins;
+  color: #141416;
+}
+.forgot-password {
+  font: normal normal 400 14px/16px Poppins;
+  letter-spacing: -0.14px;
+  color: #182B4E;
+}
+.custom-padding {
+  padding: 90px;
+}
+@media screen and (max-width: 768px) {
+  .custom-padding {
+    padding: 0;
+  }
+}
 </style>
