@@ -1,8 +1,6 @@
 <template>
-  <div class="container">
-  <div class="d-flex justify-content-between container">
-    <p>Dashboard</p>
-    <div><a @click="logout">logout</a></div>
+  <div>
+  <div>
   </div>
   <div ref="editor" id="editor">
   </div>

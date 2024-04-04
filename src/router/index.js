@@ -11,6 +11,9 @@ import ChangePassword from '@/views/auth/components/ChangePassword.vue'
 //Dashboard views
 import DashboardIndex from '@/views/dashboard/DashboardIndex.vue'
 import Dashboard from '@/views/dashboard/components/Dashboard.vue'
+import Notes from '@/views/dashboard/components/Notes.vue'
+import AcademicClass from '@/views/dashboard/components/AcademicClass.vue'
+import Question from '@/views/dashboard/components/Question.vue'
 
 
 const authPages = [
@@ -73,6 +76,21 @@ const dashboardPages = {
             path: 'dashboard',
             name: 'dashboard',
             component: Dashboard,
+        },
+        {
+            path: 'class',
+            name: 'academic_class',
+            component: AcademicClass,
+        },
+        {
+            path: 'notes',
+            name: 'notes',
+            component: Notes,
+        },
+        {
+            path: 'question',
+            name: 'questions',
+            component: Question,
         },
         {
             path: 'change-password',
